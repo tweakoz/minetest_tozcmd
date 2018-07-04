@@ -25,14 +25,15 @@ end
 local toz_clr = function(player, param)
   local dir = player:get_look_dir()
   local pos = player:get_pos()
-   for X=-10,10 do
-     for Z=-10,10 do
+  local node =  minetest.get_node({x=pos.x,y=pos.y-1,z=pos.z})
+   for X=-param,param do
+     for Z=-param,param do
        local ipos = {  x=math.floor(pos.x)+X,
                        y=math.floor(pos.y),
                        z=math.floor(pos.z)+Z,
                     }
         if param ~= nil then
-          minetest.set_node(ipos, { name = param })
+          minetest.set_node(ipos, node)
         end
      end
    end
